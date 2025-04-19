@@ -37,9 +37,33 @@ class UsuarioService
         $stmt->bindValue(":id", $this->usuario->__get("id"));
         $stmt->execute();
     }
-    public function atualizar()
+    public function buscarId()
     {
-
+        $query = "SELECT * FROM tbusuarios
+                WHERE id = :id";
+        $stmt = $this->conexao->prepare($query);
+        $stmt->bindValue("id", $this->usuario->__get("id"));
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
+    public function editar()
+    {
+        $query = "UPDATE tbusuarios
+                SET nome = :nome,email = :email, senha = :senha, tipo = :tipo, telefone = :telefone, endereco = :endereco
+                WHERE id = :id";
+        $stmt = $this->conexao->prepare($query);
+
+        $stmt->bindValue("nome", $this->usuario->__get("nome"));
+        $stmt->bindValue("email", $this->usuario->__get("email"));
+        $stmt->bindValue(":senha", $this->usuario->__get("senha"));
+        $stmt->bindValue(":tipo", $this->usuario->__get("tipo"));
+        $stmt->bindValue(":telefone", $this->usuario->__get("telefone"));
+        $stmt->bindValue(":endereco", $this->usuario->__get("endereco"));
+        $stmt->bindValue(":id", $this->usuario->__get("id"));
+
+        return $stmt->execute();
+        #$stmt->fetch(PDO::FETCH_OBJ);
+    }
+
 }
 ?>

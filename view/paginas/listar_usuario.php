@@ -45,7 +45,7 @@ require_once "../controller/usuarioController.php";
                                 <i class="fas fa-trash-alt mr-3 fa-lg text-danger"
                                     onclick="remover(<?= $usuario->id ?>, '<?= $usuario->nome ?>')">
                                 </i>
-                                <i class="fas fa-edit fa-lg text-info" onclick="editar()"></i>
+                                <i class="fas fa-edit fa-lg text-info" onclick="editar(<?= $usuario->id ?>)"></i>
                             </div>
                         </div>
                     </td>
@@ -56,6 +56,11 @@ require_once "../controller/usuarioController.php";
                     if (confirm(`Deseja remover ${nome}?`)) {
                         location.href = '../controller/usuarioController.php?acao=remover&id=' + id;
                     }
+                }
+                function editar(id) {
+                    //alert("Cheguei");
+                    location.href = 'home.php?acao=editar&id=' + id
+
                 }
 
             </script>

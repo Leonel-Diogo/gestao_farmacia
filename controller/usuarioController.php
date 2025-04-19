@@ -23,6 +23,7 @@ if ($acao == "inserir") {
     $usuarioService->inserir();
     header("location: ../view/home.php?acao=listar");
     exit;
+
 } elseif ($acao == "listar") {
     $conexao = new Conexao();
     $usuario = new Usuario();
@@ -37,6 +38,22 @@ if ($acao == "inserir") {
     $usuarioService = new UsuarioService($conexao, $usuario);
     $usuarioService->remover();
 
+    header("location: ../view/home.php?acao=listar");
+    exit;
+} elseif ($acao == "editar") {
+    $conexao = new Conexao();
+    $usuario = new Usuario();
+
+    $usuario->__set("nome", $_POST['nome']);
+    $usuario->__set("email", $_POST['email']);
+    $usuario->__set("senha", $_POST['senha']);
+    $usuario->__set("tipo", $_POST['tipo']);
+    $usuario->__set("telefone", $_POST['telefone']);
+    $usuario->__set("endereco", $_POST['endereco']);
+    $usuario->__set("id", $_GET['id']);
+
+    $usuarioService = new UsuarioService($conexao, $usuario);
+    $usuarios = $usuarioService->editar();
     header("location: ../view/home.php?acao=listar");
     exit;
 }
