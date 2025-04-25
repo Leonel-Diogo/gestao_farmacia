@@ -31,9 +31,9 @@ class UsuarioService
     }
     public function remover()
     {
-        $uqery = "DELETE FROM tbusuarios
+        $query = "DELETE FROM tbusuarios
         WHERE id = :id";
-        $stmt = $this->conexao->prepare($uqery);
+        $stmt = $this->conexao->prepare($query);
         $stmt->bindValue(":id", $this->usuario->__get("id"));
         $stmt->execute();
     }
@@ -42,7 +42,7 @@ class UsuarioService
         $query = "SELECT * FROM tbusuarios
                 WHERE id = :id";
         $stmt = $this->conexao->prepare($query);
-        $stmt->bindValue("id", $this->usuario->__get("id"));
+        $stmt->bindValue(":id", $this->usuario->__get("id"));
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
@@ -53,8 +53,8 @@ class UsuarioService
                 WHERE id = :id";
         $stmt = $this->conexao->prepare($query);
 
-        $stmt->bindValue("nome", $this->usuario->__get("nome"));
-        $stmt->bindValue("email", $this->usuario->__get("email"));
+        $stmt->bindValue(":nome", $this->usuario->__get("nome"));
+        $stmt->bindValue(":email", $this->usuario->__get("email"));
         $stmt->bindValue(":senha", $this->usuario->__get("senha"));
         $stmt->bindValue(":tipo", $this->usuario->__get("tipo"));
         $stmt->bindValue(":telefone", $this->usuario->__get("telefone"));

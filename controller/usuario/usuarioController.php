@@ -1,14 +1,13 @@
 <?php
 #INCLUSÃO DE SCRIPTS
-require_once "../config/conexao.php";
-require_once "../model/usuario.php";
-require_once "../model/usuarioService.php";
+require_once(__DIR__ . '/../../config/conexao.php');
+require_once(__DIR__ . '/../../model/usuario/usuario.php');
+require_once(__DIR__ . '/../../model/usuario/usuarioService.php');
 
 $usuarios = [];
 $acao = isset($_GET["acao"]) ? $_GET["acao"] : $acao;
-#echo $acao;
 
-if ($acao == "inserir") {
+if ($acao == "inserirUsuario") {
     $conexao = new Conexao();
     $usuario = new Usuario();
 
@@ -21,26 +20,28 @@ if ($acao == "inserir") {
 
     $usuarioService = new UsuarioService($conexao, $usuario);
     $usuarioService->inserir();
-    header("location: ../view/home.php?acao=listar");
+    #header("location: ../../view/home.php?acao=listarUsuario");
+    header("Location: /gestao_farmacia/view/home.php?acao=listarUsuario");
     exit;
 
-} elseif ($acao == "listar") {
+} elseif ($acao == "listarUsuario") {
     $conexao = new Conexao();
     $usuario = new Usuario();
 
     $usuarioService = new UsuarioService($conexao, $usuario);
     $usuarios = $usuarioService->listar();
 
-} elseif ($acao == "remover") {
+} elseif ($acao == "removerUsuario") {
     $conexao = new Conexao();
     $usuario = new Usuario();
     $usuario->__set("id", $_GET['id']);
     $usuarioService = new UsuarioService($conexao, $usuario);
     $usuarioService->remover();
 
-    header("location: ../view/home.php?acao=listar");
+    #header("location: ../../view/home.php?acao=listarUsuario");
+    header("Location: /gestao_farmacia/view/home.php?acao=listarUsuario");
     exit;
-} elseif ($acao == "editar") {
+} elseif ($acao == "editarUsuario") {
     $conexao = new Conexao();
     $usuario = new Usuario();
 
@@ -54,6 +55,7 @@ if ($acao == "inserir") {
 
     $usuarioService = new UsuarioService($conexao, $usuario);
     $usuarios = $usuarioService->editar();
-    header("location: ../view/home.php?acao=listar");
+    #header("location: ../../view/home.php?acao=listarUsuario");
+    header("Location: /gestao_farmacia/view/home.php?acao=listarUsuario");
     exit;
 }

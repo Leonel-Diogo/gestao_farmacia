@@ -53,14 +53,19 @@
                 </li>
 
                 <li data-toggle="collapse" data-target="#ajuda" class="collapsed">
-                    <a href="home.php?acao=listar"><i class="fa fa-life-ring sidebar-icon"></i> Usuários
+                    <a href="home.php?acao=listarUsuario"><i class="fa fa-user-cog sidebar-icon"></i> Usuários
                         <span class="arrow"><i class="fa fa-angle-down"></i></spam></a>
-                </li>
-                <!--<ul class="sub-menu collapse" id="ajuda">
+                    <!--<ul class="sub-menu collapse" id="ajuda">
                     <li><a href="#" id="documentacao"><i class="fa fa-angle-right"></i> Clientes</a></li>
                     <li><a href="#" id="suporte"><i class="fa fa-angle-right"></i> Farmaceuticos <small><i
                                     class="fa fa-external-link"></i></small></a></li>
                 </ul>-->
+                </li>
+                <li data-toggle="collapse" data-target="#ajuda" class="collapsed">
+                    <a href="home.php?acao=listarProduto"><i class="fa fa-notes-medical sidebar-icon"></i>Produtos
+                        <span class="arrow"><i class="fa fa-angle-down"></i></spam></a>
+                </li>
+
             </ul>
         </div>
     </div>

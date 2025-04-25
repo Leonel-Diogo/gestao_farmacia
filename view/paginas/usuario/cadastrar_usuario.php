@@ -1,7 +1,5 @@
-<!--<form action="../controller/usuarioController.php" method="post">-->
-
-<form action="../controller/usuarioController.php?acao=inserir" method="post" class="row g-3 needs-validation"
-    novalidate>
+<form action="/gestao_farmacia/controller/usuario/usuarioController.php?acao=inserirUsuario" method="post"
+    class="row g-3 needs-validation" novalidate>
 
     <div class="col-md-6">
         <label for="validationCustom01" class="form-label">Nome</label>

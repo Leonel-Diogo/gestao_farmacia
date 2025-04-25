@@ -1,4 +1,4 @@
-<form action="../controller/usuarioController.php?acao=editar&id=<?= $usuarios->id ?>" method="post"
+<form action="../controller/usuario/usuarioController.php?acao=editarUsuario&id=<?= $usuarios->id ?>" method="post"
     class="row g-3 needs-validation" novalidate>
 
     <div class="col-md-6">

@@ -1,8 +1,6 @@
 <?php
-$acao = $_GET["acao"];
-#$acao = "listar";
-require_once "../controller/usuarioController.php";
-
+$acao = "listarUsuario";
+require_once(__DIR__ . '/../../../controller/usuario/usuarioController.php');
 ?>
 
 <div class="row">
@@ -12,7 +10,7 @@ require_once "../controller/usuarioController.php";
                 <h6 class="flexbox">Usuários do sistema</h6>
             </div>
             <div class="col-2">
-                <a href="home.php?acao=inserir" class="btn btn-secundary text-white">
+                <a href="home.php?acao=inserirUsuario" class="btn btn-secundary text-white">
                     <i class="fa-solid fa-user-plus add-icon"></i>
                 </a>
             </div>
@@ -54,12 +52,11 @@ require_once "../controller/usuarioController.php";
             <script>
                 function remover(id, nome) {
                     if (confirm(`Deseja remover ${nome}?`)) {
-                        location.href = '../controller/usuarioController.php?acao=remover&id=' + id;
+                        location.href = '../controller/usuario/usuarioController.php?acao=removerUsuario&id=' + id;
                     }
                 }
                 function editar(id) {
-                    //alert("Cheguei");
-                    location.href = 'home.php?acao=editar&id=' + id
+                    location.href = 'home.php?acao=editarUsuario&id=' + id
 
                 }
 
