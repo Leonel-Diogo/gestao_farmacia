@@ -28,6 +28,17 @@
         <input type="number" name="precounitario" class="form-control" id="validationCustom02" placeholder="500"
             required>
     </div>
+    <!--REVER-->
+    <div class="col-md-6 mb-3">
+        <label for="tipo" class="form-label">Categoria</label>
+        <select class="form-select" aria-label="Default select example">
+            <?php foreach ($variable as $key => $value) { ?>
+                <option selected>...</option>
+                <option value="<?= $categorias->id ?>"><?= $categorias->nome ?></option>
+            <?php } ?>
+        </select>
+    </div>
+
 
 
     <div class="col-md-6">

@@ -5,8 +5,12 @@ require_once(__DIR__ . '/../../config/conexao.php');
 #require_once(__DIR__ . '/../../model/produto/produto.php');
 require_once(__DIR__ . '/../../model/produto/produto.php');
 require_once(__DIR__ . '/../../model/produto/produtoService.php');
+#REVER
+require_once(__DIR__ . '/../../model/categoria/categoria.php');
+require_once(__DIR__ . '/../../model/categoria/categoriaService.php');
 
 $produtos = [];
+$categorias = [];
 $acao = isset($_GET["acao"]) ? $_GET["acao"] : $acao;
 
 if ($acao == "inserirProduto") {
@@ -16,6 +20,8 @@ if ($acao == "inserirProduto") {
     $produto->__set("validade", $_POST['validade']);
     $produto->__set("qtdestoque", $_POST['qtdestoque']);
     $produto->__set("precounitario", $_POST['precounitario']);
+    #REVER
+    $produto->__set("categoria", $_POST['categoria']);
 
     $produtoService = new ProdutoService($conexao, $produto);
     $produtoService->inserir();
@@ -36,6 +42,7 @@ if ($acao == "inserirProduto") {
     $produtoService->remover();
     header("Location: /gestao_farmacia/view/home.php?acao=listarProduto");
     exit;
+
 } elseif ($acao == "editarProduto") {
     $conexao = new Conexao();
     $produto = new Produto();

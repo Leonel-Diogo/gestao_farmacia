@@ -65,6 +65,11 @@
                     <a href="home.php?acao=listarProduto"><i class="fa fa-notes-medical sidebar-icon"></i>Produtos
                         <span class="arrow"><i class="fa fa-angle-down"></i></spam></a>
                 </li>
+                <li data-toggle="collapse" data-target="#ajuda" class="collapsed">
+                    <a href="home.php?acao=listarCategoria"><i class="fa fa-layer-group sidebar-icon"></i>
+                        Categoria
+                        <span class="arrow"><i class="fa fa-angle-down"></i></spam></a>
+                </li>
 
             </ul>
         </div>

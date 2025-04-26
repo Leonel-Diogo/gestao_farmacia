@@ -9,6 +9,9 @@ require_once "../model/usuario/usuarioService.php";
 #SCRIPTS DE CONFIGURAÇÃO DE PRODUTOS
 require_once('../model/produto/produto.php');
 require_once('../model/produto/produtoService.php');
+#SCRIPTS DE CONFIGURAÇÃO DE CATEGORIA
+require_once('../model/categoria/categoria.php');
+require_once('../model/categoria/categoriaService.php');
 
 #CONTEÚDO
 if (isset($_GET['acao'])) {
@@ -34,7 +37,18 @@ if (isset($_GET['acao'])) {
         $usuarios = $usuarioService->buscarId();
         require_once "paginas/usuario/editar_usuario.php";
         exit;
-    }#PRODUTOS
+    }#CATEGORIA
+    elseif ($acao == "inserirCategoria") {
+        require_once "paginas/categoria/cadastrar_categoria.php";
+        exit;
+    } elseif ($acao == "listarCategoria") {
+        require_once "paginas/categoria/listar_categoria.php";
+        exit;
+    } elseif ($acao == "removerCategoria") {
+        require_once "paginas/categoria/listar_categoria.php";
+        exit;
+    }
+    #PRODUTOS
     elseif ($acao == "inserirProduto") {
         require_once "paginas/produto/cadastrar_produto.php";
         exit;
@@ -53,6 +67,17 @@ if (isset($_GET['acao'])) {
         $produtos = $produtoService->buscarId();
         require_once "paginas/produto/editar_produto.php";
         exit;
+    } elseif ($acao == "editarCategoria") {
+        $categorias = [];
+
+        $conexao = new Conexao();
+        $categoria = new Categoria();
+        $categoria->__set("id", $_GET['id']);
+
+        $categoriaService = new CategoriaService($conexao, $categoria);
+        $categorias = $categoriaService->buscarId();
+        require_once "paginas/categoria/editar_categoria.php";
+
     }
 }
 #FOOTER
